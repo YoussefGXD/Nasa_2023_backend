@@ -21,6 +21,25 @@ const userShcema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
+    enum: ["ADMIN", "USER"],
+    default: "USER",
+  },
+  bio: {
+    type: String,
+  },
+  picture: {
+    type: String,
+  },
+  favoriteBooks: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  freqList: {
+    type: [
+      {
+        category: String,
+        frequency: Number,
+      },
+    ],
   },
 });
 export const User = mongoose.model("User", userShcema);
